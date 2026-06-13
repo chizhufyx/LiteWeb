@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chizhu服务器官网 · 极简查询版</title>
-    <!-- 只用最基本的图标库，轻量 -->
+    <title>chizhu服务器官网 · 官方文档版</title>
+    <!-- 极简图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 全局白底，极简，无动画，无透明，无星空 */
+        /* 全局白底，极简，无动画，无透明效果 */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +27,7 @@
             padding: 20px;
         }
 
-        /* 导航 —— 纯白简约 */
+        /* 导航栏 — 纯白简约 */
         .nav-bar {
             background: white;
             border-bottom: 1px solid #eaeef2;
@@ -53,12 +53,11 @@
             gap: 12px;
         }
 
-        /* 服务器头像 —— 如果能获取favicon就显示，否则纯色 */
         .server-avatar {
             width: 42px;
             height: 42px;
             border-radius: 8px;
-            background: #2b6c9e;  /* 默认Minecraft风格蓝 */
+            background: #2b6c9e;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -105,7 +104,16 @@
             font-weight: 600;
         }
 
-        /* 主内容区 */
+        /* 外链文档按钮专用样式 */
+        .doc-external {
+            background: #eef2fa;
+            color: #1e4d8c;
+        }
+        .doc-external:hover {
+            background: #e1e9f2;
+        }
+
+        /* 页面容器 */
         .page {
             display: none;
             padding: 30px 0;
@@ -115,7 +123,7 @@
             display: block;
         }
 
-        /* 卡片样式 —— 极简白底灰边 */
+        /* 卡片样式 — 极简白底灰边 */
         .card {
             background: white;
             border: 1px solid #dee2e6;
@@ -141,132 +149,6 @@
             background: #f8fafc;
             border-radius: 0 8px 8px 0;
             line-height: 1.6;
-        }
-
-        /* 实时状态卡片 */
-        .status-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px 40px;
-            background: #f9fcff;
-            padding: 22px 25px;
-            border-radius: 20px;
-            border: 1px solid #cfdfee;
-        }
-
-        .status-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .status-label {
-            font-weight: 600;
-            color: #334155;
-            min-width: 70px;
-        }
-
-        .status-value {
-            font-weight: 600;
-            color: #0a4d8c;
-            background: #e6f2ff;
-            padding: 4px 14px;
-            border-radius: 40px;
-            font-size: 1.1rem;
-        }
-
-        .online-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ccc;
-            margin-right: 6px;
-        }
-
-        .dot-green { background: #2ecc71; }
-        .dot-red { background: #e74c3c; }
-
-        /* 玩家列表 */
-        .players-section {
-            margin-top: 25px;
-            background: #f2f6fc;
-            border-radius: 20px;
-            padding: 18px 22px;
-        }
-
-        .players-title {
-            font-weight: 600;
-            color: #254358;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .player-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .player-badge {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            color: #1e293b;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-
-        /* 服务器地址切换 */
-        .domain-switch {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 18px 0 12px;
-        }
-
-        .domain-btn {
-            background: white;
-            border: 1px solid #b9c9da;
-            border-radius: 30px;
-            padding: 8px 22px;
-            font-weight: 500;
-            color: #1e3a5f;
-            cursor: pointer;
-            transition: 0.1s;
-            font-size: 0.95rem;
-        }
-
-        .domain-btn.active {
-            background: #1e4d8c;
-            border-color: #1e4d8c;
-            color: white;
-        }
-
-        /* 按钮/链接 */
-        .btn {
-            display: inline-block;
-            background: #1e4d8c;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-outline {
-            background: white;
-            border: 2px solid #1e4d8c;
-            color: #1e4d8c;
-            padding: 10px 28px;
-        }
-
-        .btn-sm {
-            padding: 8px 20px;
-            font-size: 0.95rem;
         }
 
         /* 教程步骤 */
@@ -346,7 +228,7 @@
             margin-top: 8px;
         }
 
-        /* 联系方式 */
+        /* 联系方式模块 */
         .contact-row {
             display: flex;
             flex-wrap: wrap;
@@ -369,6 +251,38 @@
             width: 40px;
         }
 
+        /* 文档跳转展示卡 */
+        .doc-hero {
+            text-align: center;
+            padding: 40px 30px;
+        }
+        .doc-hero i {
+            font-size: 3.5rem;
+            color: #2c6e9e;
+            margin-bottom: 20px;
+        }
+        .doc-hero h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .doc-btn {
+            display: inline-block;
+            background: #1e4d8c;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 48px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            transition: 0.1s;
+            border: none;
+            cursor: pointer;
+        }
+        .doc-btn:hover {
+            background: #0f3b6b;
+        }
+
         /* 页脚 */
         .footer {
             border-top: 1px solid #e2e8f0;
@@ -377,95 +291,38 @@
             text-align: center;
             color: #4b6584;
         }
-
-        /* 无动画，加载条都不要 */
-        .loader {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
-<!-- 极简导航 无动画 -->
+<!-- 极简导航 无任何查询功能 -->
 <div class="nav-bar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="server-avatar" id="serverAvatar">
-                <i class="fa fa-cube"></i>   <!-- 默认图标，之后会被头像替换 -->
+            <div class="server-avatar">
+                <i class="fa fa-cube"></i>
             </div>
-            <h1>chizhu <span>· 极简查询</span></h1>
+            <h1>chizhu <span>· 官方文档版</span></h1>
         </div>
         <div class="nav-links">
-            <a href="#" class="active" data-page="home">状态</a>
+            <!-- 内部页面切换链接: 加入教程 / 快捷链接 / 联系方式 -->
             <a href="#" data-page="join">加入</a>
             <a href="#" data-page="links">快捷链接</a>
             <a href="#" data-page="contact">联系方式</a>
+            <!-- 官方文档直接跳转外部链接（删除查询功能，新增文档直链）-->
+            <a href="https://docs.qq.com/doc/DS0t4QkhZU0p3WENp" target="_blank" class="doc-external" id="docDirectLink">
+                <i class="fa fa-book-open" style="margin-right: 5px;"></i>官方文档
+            </a>
         </div>
     </div>
 </div>
 
 <main class="container">
-
-    <!-- ========= 首页：状态查询 ========= -->
-    <div id="home" class="page active">
-        <div class="card">
-            <div class="card-title">⚡ 服务器实时状态</div>
-            <div class="card-sub">点击下方地址可切换查询 · 显示玩家列表</div>
-
-            <!-- 域名切换按钮 (已移除 chizhu.asia) -->
-            <div class="domain-switch">
-                <div class="domain-btn active" data-domain="chizhudream.top" data-port="25565">🌐 chizhudream.top</div>
-                <div class="domain-btn" data-domain="s1.52mc.cc" data-port="26078">🔄 s1.52mc.cc:26078 (备用)</div>
-            </div>
-
-            <!-- 实时数据区域 (动态更新) -->
-            <div class="status-grid" id="statusGrid">
-                <div class="status-item">
-                    <span class="status-label">地址</span>
-                    <span class="status-value" id="currentDomainDisplay">chizhudream.top</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">状态</span>
-                    <span class="status-value" id="serverStatus"><span class="online-dot" id="statusDot"></span> 查询中...</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">版本</span>
-                    <span class="status-value" id="serverVersion">-</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">在线</span>
-                    <span class="status-value" id="playerCount"><span id="onlineNum">0</span>/<span id="maxNum">0</span></span>
-                </div>
-            </div>
-
-            <!-- 在线玩家列表 -->
-            <div class="players-section" id="playersSection" style="display: none;">
-                <div class="players-title"><i class="fa fa-users" style="margin-right: 8px;"></i>当前在线的玩家</div>
-                <div class="player-badges" id="playerList"></div>
-            </div>
-            <div class="players-section" id="noPlayersSection" style="display: none;">
-                <div class="players-title">🌙 暂时没有玩家在线</div>
-            </div>
-
-            <div style="margin-top: 20px; color: #4f6f8f; font-size:0.9rem;" id="queryTime"></div>
-        </div>
-
-        <!-- 额外信息：服务器头像会尝试从API获取 -->
-        <div class="card">
-            <div class="card-title">📌 快速入门</div>
-            <div>👉 点「加入」查看教程 · 服务器支持 1.12~1.21 版本</div>
-            <div style="margin-top:15px">
-                <a href="#" class="btn btn-sm" data-page="join">📖 新手教程</a>
-                <a href="#" class="btn btn-outline btn-sm" style="margin-left:12px;" data-page="links">🔗 所有链接</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========= 加入教程 ========= -->
-    <div id="join" class="page">
+    <!-- ========= 加入教程页面（默认展示） ========= -->
+    <div id="join" class="page active">
         <div class="card">
             <div class="card-title">🧭 新手加入教程</div>
-            <div class="card-sub">Java版 电脑/手机 快速上手</div>
+            <div class="card-sub">Java版 电脑/手机 快速上手，纯净体验</div>
 
             <div class="step-list">
                 <div class="step-item">
@@ -485,13 +342,14 @@
             </div>
 
             <div class="tip-box">
-                <strong>⚠️ 无法连接？</strong> 尝试更换备用地址 s1.52mc.cc:26078 或检查网络/VPN。<br>
-                加QQ群反馈: <strong>915281565</strong>
+                <strong>📖 官方指南 & 规则文档</strong> ｜ 详细玩法、指令大全、权限说明请查阅 
+                <a href="https://docs.qq.com/doc/DS0t4QkhZU0p3WENp" target="_blank" style="font-weight:600;">📄 chizhu服务器官方文档</a> <br>
+                ⚠️ 无法连接？尝试更换备用地址 s2.52mc.cc:26023 或加QQ群反馈: <strong>915281565</strong>
             </div>
         </div>
     </div>
 
-    <!-- ========= 快捷链接 ========= -->
+    <!-- ========= 快捷链接页面 ========= -->
     <div id="links" class="page">
         <div class="card">
             <div class="card-title">🔗 快捷链接</div>
@@ -505,7 +363,7 @@
                 </div>
                 <div class="link-block">
                     <i class="fa fa-map"></i>
-                    <a href="http://210.16.168.53:4567/" target="_blank">服务器地图</a>
+                    <a href="http://s2.52mc.cc:4567/" target="_blank">服务器地图</a>
                     <p>全景浏览</p>
                 </div>
                 <div class="link-block">
@@ -528,11 +386,16 @@
                     <a href="https://www.douyin.com/user/MS4wLjABAAAA-CrDPDUX-s6oxsmNrtBP07qfmrKGd5iK5KV3WKVlejWNyd52lPK8KhIriDwwYbp8" target="_blank">抖音</a>
                     <p>动态通知</p>
                 </div>
+                <div class="link-block highlight">
+                    <i class="fa fa-book"></i>
+                    <a href="https://docs.qq.com/doc/DS0t4QkhZU0p3WENp" target="_blank">完整官方文档</a>
+                    <p>规则/指南/更新</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ========= 联系方式 ========= -->
+    <!-- ========= 联系方式页面 ========= -->
     <div id="contact" class="page">
         <div class="card">
             <div class="card-title">📞 联系方式 & 群组</div>
@@ -549,175 +412,89 @@
                     <i class="fa fa-globe"></i>
                     <div><strong>备用官网</strong><br>web.chizhudream.top</div>
                 </div>
+                <div class="contact-item">
+                    <i class="fa fa-file-alt"></i>
+                    <div><strong>官方文档</strong><br><a href="https://docs.qq.com/doc/DS0t4QkhZU0p3WENp" target="_blank">docs.qq.com/doc/DS0t4QkhZU0p3WENp</a></div>
+                </div>
             </div>
-            <p style="margin-top: 25px;">任何问题建议欢迎联系，反馈bug可获🪲称号</p>
+            <p style="margin-top: 25px;">任何问题欢迎加群反馈，最新公告、活动都在官方文档公布。</p>
         </div>
     </div>
 </main>
 
 <footer class="footer">
-    <p>© chizhu 服务器 · 极简查询版 · 状态API: api.minetools.eu</p>
-    <p style="font-size:0.85rem; margin-top:8px;">正式官网: <a href="https://web.chizhudream.top" target="_blank">web.chizhudream.top</a> (含特效)</p>
+    <p>© chizhu 服务器 · 官方文档版 · 纯净体验</p>
+    <p style="font-size:0.85rem; margin-top:8px;">正式官网: <a href="https://web.chizhudream.top" target="_blank">web.chizhudream.top</a> | 
+    <a href="https://docs.qq.com/doc/DS0t4QkhZU0p3WENp" target="_blank">📘 官方文档中心</a></p>
 </footer>
 
 <script>
     (function() {
-        // 配置
-        let currentDomain = 'chizhudream.top';
-        let currentPort = 25565;
-        const API_BASE = 'https://api.minetools.eu/ping';
-
-        // 获取DOM元素
+        // 极简版页面切换逻辑（已完全移除服务器查询功能、API、定时器、玩家列表等）
+        // 仅保留内部页面导航（加入/快捷链接/联系方式）
+        // 官方文档链接已经是独立外链，不参与页面切换
+        
         const pages = document.querySelectorAll('.page');
         const navLinks = document.querySelectorAll('.nav-links a');
-        const domainBtns = document.querySelectorAll('.domain-btn');
-        const currentDomainSpan = document.getElementById('currentDomainDisplay');
-        const serverStatusEl = document.getElementById('serverStatus');
-        const statusDot = document.getElementById('statusDot');
-        const versionEl = document.getElementById('serverVersion');
-        const onlineNum = document.getElementById('onlineNum');
-        const maxNum = document.getElementById('maxNum');
-        const playersSection = document.getElementById('playersSection');
-        const noPlayersSection = document.getElementById('noPlayersSection');
-        const playerListDiv = document.getElementById('playerList');
-        const queryTimeSpan = document.getElementById('queryTime');
-        const avatarDiv = document.getElementById('serverAvatar');
-
-        // 简化导航切换
-        navLinks.forEach(link => {
+        
+        // 过滤出内部页面链接（拥有 data-page 属性的链接才是内部切换）
+        // 官方文档外链没有 data-page 属性，不做切换处理
+        const internalLinks = Array.from(navLinks).filter(link => link.hasAttribute('data-page'));
+        
+        // 设置默认激活的页面 (join页面已经带有active类，但确保同步高亮)
+        const setActivePage = (pageId) => {
+            pages.forEach(page => {
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+            
+            // 更新导航栏active样式（仅针对内部链接）
+            internalLinks.forEach(link => {
+                const targetPage = link.getAttribute('data-page');
+                if (targetPage === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        };
+        
+        // 为内部链接添加点击事件 (阻止默认跳转，仅做页面切换)
+        internalLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('data-page');
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                pages.forEach(p => p.classList.remove('active'));
-                document.getElementById(targetId).classList.add('active');
-                // 如果切回首页，刷新一下数据
-                if (targetId === 'home') fetchStatus();
+                if (targetId && document.getElementById(targetId)) {
+                    setActivePage(targetId);
+                    // 可选: 更新浏览器hash但不影响体验，纯静态切换
+                }
             });
         });
-
-        // 域名切换
-        domainBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                domainBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentDomain = btn.dataset.domain;
-                currentPort = btn.dataset.port;
-                if (currentDomainSpan) currentDomainSpan.innerText = currentDomain;
-                fetchStatus();
-            });
-        });
-
-        // 获取服务器图标并显示在头像
-        async function fetchIconAndSet() {
-            try {
-                const url = `${API_BASE}/${'chizhudream.top'}/25565`;  // 默认主地址获取图标
-                const res = await fetch(url);
-                const data = await res.json();
-                if (data.favicon) {
-                    avatarDiv.style.backgroundImage = `url(${data.favicon})`;
-                    avatarDiv.style.backgroundColor = 'transparent';
-                    avatarDiv.innerHTML = '';  // 移除图标
-                } else {
-                    // 保留默认立方体
-                }
-            } catch (error) {
-                // 静默失败，保留默认图标
+        
+        // 确保初始状态正确 (加入页面激活，且高亮加入链接)
+        const currentActivePage = document.querySelector('.page.active');
+        if (!currentActivePage || currentActivePage.id !== 'join') {
+            // 默认激活加入页面
+            setActivePage('join');
+        } else {
+            // 同步高亮加入链接
+            const joinLink = Array.from(internalLinks).find(l => l.getAttribute('data-page') === 'join');
+            if (joinLink) {
+                internalLinks.forEach(link => link.classList.remove('active'));
+                joinLink.classList.add('active');
             }
         }
-
-        // 查询状态 (核心功能，没有任何动画)
-        async function fetchStatus() {
-            if (!serverStatusEl) return;
-            serverStatusEl.innerHTML = '<span class="online-dot" id="statusDot"></span> 查询中...';
-            if (versionEl) versionEl.innerText = '-';
-            onlineNum.innerText = '0';
-            maxNum.innerText = '0';
-            if (playersSection) playersSection.style.display = 'none';
-            if (noPlayersSection) noPlayersSection.style.display = 'none';
-
-            try {
-                const url = `${API_BASE}/${currentDomain}/${currentPort}`;
-                const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
-                const data = await response.json();
-
-                if (data.error) throw new Error(data.error);
-
-                // 更新在线状态
-                const isOnline = true;
-                statusDot.className = 'online-dot dot-green';
-                serverStatusEl.innerHTML = '<span class="online-dot dot-green"></span> 在线';
-
-                // 版本
-                versionEl.innerText = data.version?.name || '1.20+';
-
-                // 人数
-                const online = data.players?.online || 0;
-                const max = data.players?.max || 0;
-                onlineNum.innerText = online;
-                maxNum.innerText = max;
-
-                // 玩家列表
-                if (online > 0 && data.players?.sample && data.players.sample.length > 0) {
-                    if (playersSection) {
-                        playerListDiv.innerHTML = '';
-                        data.players.sample.forEach(p => {
-                            const badge = document.createElement('span');
-                            badge.className = 'player-badge';
-                            badge.innerText = p.name;
-                            playerListDiv.appendChild(badge);
-                        });
-                        playersSection.style.display = 'block';
-                        if (noPlayersSection) noPlayersSection.style.display = 'none';
-                    }
-                } else {
-                    if (playersSection) playersSection.style.display = 'none';
-                    if (noPlayersSection) {
-                        noPlayersSection.style.display = 'block';
-                    }
-                }
-
-                // 如果有favicon并且头像还是默认状态，更新一下
-                if (data.favicon && avatarDiv.style.backgroundImage === '') {
-                    avatarDiv.style.backgroundImage = `url(${data.favicon})`;
-                    avatarDiv.style.backgroundColor = 'transparent';
-                    avatarDiv.innerHTML = '';
-                }
-
-                // 记录时间
-                if (queryTimeSpan) queryTimeSpan.innerText = `最后更新: ${new Date().toLocaleTimeString()}`;
-
-            } catch (err) {
-                console.warn('查询失败', err);
-                statusDot.className = 'online-dot dot-red';
-                serverStatusEl.innerHTML = '<span class="online-dot dot-red"></span> 离线或超时';
-                versionEl.innerText = '无法获取';
-                onlineNum.innerText = '?';
-                maxNum.innerText = '?';
-                if (playersSection) playersSection.style.display = 'none';
-                if (noPlayersSection) noPlayersSection.style.display = 'none';
-            }
-        }
-
-        // 初始化：获取一次图标，立即查询状态
-        fetchIconAndSet();
-        fetchStatus();
-
-        // 每45秒自动刷新状态（保持轻量）
-        setInterval(fetchStatus, 45000);
-
-        // 为了让头像有点击刷新（可选）
-        if (avatarDiv) {
-            avatarDiv.style.cursor = 'pointer';
-            avatarDiv.addEventListener('click', () => {
-                fetchStatus();
-            });
-        }
-
-        // 处理备用官网链接在极简版里的显示 (已放页脚)
+        
+        // 额外：确保外部文档链接在任何时候都不会触发页面切换，已是正常的跳转行为
+        // 完全删除所有服务器查询相关代码，无任何 setInterval 或 fetch 调用
+        // 删除原 minetools 相关逻辑，保持页面干净极简
+        
+        // 可选：为备用官网和文档链接增加控制台友好提示（纯粹装饰，无请求）
+        console.log("chizhu 服务器官网 - 极简文档版 | 查询功能已移除，官方文档已集成");
     })();
 </script>
-<!-- 没有任何额外动画、弹窗、预加载，极简 -->
 </body>
 </html>
